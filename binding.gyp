@@ -29,7 +29,8 @@
                 "GTEST_RELATIVE_PATH",
                 "JSONCPP_RELATIVE_PATH",
                 "WEBRTC_RELATIVE_PATH",
-                "POSIX," "__STDC_FORMAT_MACROS",
+                "POSIX,",
+                "__STDC_FORMAT_MACROS",
                 "DYNAMIC_ANNOTATIONS_ENABLED=0",
                 "NAPI_DISABLE_CPP_EXCEPTIONS",
                 "NAPI_VERSION=<(napi_build_version)",
@@ -39,9 +40,7 @@
             # gyp inside node v16 uses -rpath=$ORIGIN/ instead of -rpath=$ORIGIN/lib.target/
             # which fixes a longstanding descreptancy between platforms as documented at https://github.com/nodejs/node-gyp/issues/2233
             # This allows tests to pass for older, still buggy and inconsistent versions of node-gyp (and will be duplicative for npm >= 7 which bundles node-gyp >= v0.6.0)
-            'ldflags': [
-                "-Wl,-rpath=\$$ORIGIN/"
-            ],
+            "ldflags": ["-Wl,-rpath=\$$ORIGIN/"],
         },
     ],
 }
